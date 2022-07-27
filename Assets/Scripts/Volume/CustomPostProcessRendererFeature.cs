@@ -73,29 +73,29 @@ public class CustomPostProcessRendererFeature : ScriptableRendererFeature
     // 当为每个摄影机设置一次渲染器时，将调用此方法。
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        // if (renderingData.cameraData.postProcessEnabled)
-        // {
-        //     // 为每个render pass设置render target
-        //     var source = new RenderTargetHandle(renderer.cameraColorTarget);
-        //     if (afterOpaqueAndSky.SetupComponents())
-        //     {
-        //         afterOpaqueAndSky.Setup(source, source);
-        //         renderer.EnqueuePass(afterOpaqueAndSky); //入队
-        //     }
-        //
-        //     if (beforePostProcess.SetupComponents())
-        //     {
-        //         beforePostProcess.Setup(source, source);
-        //         renderer.EnqueuePass(beforePostProcess); //入队
-        //     }
-        //
-        //     if (afterPostProcess.SetupComponents())
-        //     {
-        //         // 如果下一个Pass是FinalBlit，则输入与输出均为_AfterPostProcessTexture
-        //         source = renderingData.cameraData.resolveFinalTarget ? afterPostProcessTexture : source;
-        //         afterPostProcess.Setup(source, source);
-        //         renderer.EnqueuePass(afterPostProcess); //入队
-        //     }
-        // }
+        if (renderingData.cameraData.postProcessEnabled)
+        {
+            // 为每个render pass设置render target
+            var source = new RenderTargetHandle(renderer.cameraColorTarget);
+            if (afterOpaqueAndSky.SetupComponents())
+            {
+                afterOpaqueAndSky.Setup(source, source);
+                renderer.EnqueuePass(afterOpaqueAndSky); //入队
+            }
+        
+            if (beforePostProcess.SetupComponents())
+            {
+                beforePostProcess.Setup(source, source);
+                renderer.EnqueuePass(beforePostProcess); //入队
+            }
+        
+            if (afterPostProcess.SetupComponents())
+            {
+                // 如果下一个Pass是FinalBlit，则输入与输出均为_AfterPostProcessTexture
+                source = renderingData.cameraData.resolveFinalTarget ? afterPostProcessTexture : source;
+                afterPostProcess.Setup(source, source);
+                renderer.EnqueuePass(afterPostProcess); //入队
+            }
+        }
     }
 }
