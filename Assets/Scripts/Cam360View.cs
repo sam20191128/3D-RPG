@@ -6,11 +6,11 @@ public class Cam360View : MonoBehaviour
     public Transform target;
     public float xSpeed = 200;
     public float ySpeed = 200;
-    public float mSpeed = 1;
+    public float mSpeed = 20;
     public float yMinLimit = -179;
     public float yMaxLimit = 179;
     public float distance = 10;
-    public float minDistance = 0.5f;
+    public float minDistance = 10;
     public float maxDistance = 100;
 
 
