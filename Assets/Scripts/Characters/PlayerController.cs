@@ -3,11 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Animator anim;
+
+    private CharacterStats characterStats;
+
+
     private GameObject attackTarget;
     private float lastAttackTime;
 
@@ -15,12 +20,14 @@ public class PlayerController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        characterStats = GetComponent<CharacterStats>();
     }
 
     private void Start()
     {
         MouseManager.Instance.OnMouseClicked += MoveToTarget;
         MouseManager.Instance.OnEnemyClicked += EventAttack;
+        characterStats.MaxHealth = 2;
     }
 
 
@@ -37,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     public void MoveToTarget(Vector3 target)
     {
+        StopAllCoroutines();
         agent.isStopped = false;
         agent.destination = target;
     }
@@ -46,14 +54,17 @@ public class PlayerController : MonoBehaviour
         if (target != null)
         {
             attackTarget = target;
+            characterStats.isCritical = Random.value < characterStats.attackData.criticalChance;
             StartCoroutine(MoveToAttackTarget());
         }
     }
 
     IEnumerator MoveToAttackTarget()
     {
+        agent.isStopped = false;
         transform.LookAt(attackTarget.transform);
-        while (Vector3.Distance(attackTarget.transform.position, transform.position) > 1)
+
+        while (Vector3.Distance(attackTarget.transform.position, transform.position) > characterStats.attackData.attackRange)
         {
             agent.destination = attackTarget.transform.position;
             yield return null;
@@ -62,8 +73,16 @@ public class PlayerController : MonoBehaviour
         agent.isStopped = true;
         if (lastAttackTime < 0)
         {
+            anim.SetBool("Critical", characterStats.isCritical);
             anim.SetTrigger("Attack");
-            lastAttackTime = 0.5f;
+            lastAttackTime = characterStats.attackData.coolDown; //CD
         }
+    }
+
+    //Animation Event
+    void Hit()
+    {
+        var targetStats = attackTarget.GetComponent<CharacterStats>();
+        targetStats.TakeDamge(characterStats, targetStats);
     }
 }
