@@ -7,17 +7,28 @@ using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
+    //ThirdPlayerMove Move
+    float h;
+    float v;
+    public float speed = 6;
+    public float turnSpeed = 15;
+    private Transform camTransform;
+    Vector3 movement;
+
+    Vector3 camForward;
+    //ThirdPlayerMove Move End
+
     private NavMeshAgent agent;
     private Animator anim;
 
     private CharacterStats characterStats;
-
 
     private GameObject attackTarget;
     private float lastAttackTime;
 
     private void Awake()
     {
+        camTransform = Camera.main.transform;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
@@ -33,9 +44,53 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Move();
+        Attack();
         SwitchAnimation();
         lastAttackTime -= Time.deltaTime;
     }
+
+    #region ThirdPlayerMove Move
+
+    void Move()
+    {
+        agent.isStopped = true;
+
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
+
+        //GetComponent<Rigidbody>().MovePosition(transform.position + camTransform.right * h + camForward * v);  
+        transform.Translate(camTransform.right * h * speed * Time.deltaTime + camForward * v * speed * Time.deltaTime, Space.World);
+        if (h != 0 || v != 0)
+        {
+            Rotating(h, v);
+        }
+    }
+
+    void Rotating(float hh, float vv)
+    {
+        camForward = Vector3.Cross(camTransform.right, Vector3.up);
+
+        Vector3 targetDir = camTransform.right * hh + camForward * vv;
+
+        Quaternion targetRotation = Quaternion.LookRotation(targetDir, Vector3.up);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+    }
+
+    void Attack()
+    {
+        agent.isStopped = false;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.SetBool("Critical", characterStats.isCritical);
+            anim.SetTrigger("Attack");
+        }
+    }
+
+    #endregion
+
 
     void SwitchAnimation()
     {
