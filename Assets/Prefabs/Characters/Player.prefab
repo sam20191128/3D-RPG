@@ -499,8 +499,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3917249888858308220}
   - component: {fileID: 3917249888848482720}
-  - component: {fileID: 3095038740084172717}
   - component: {fileID: 9024098238152502852}
+  - component: {fileID: 3095038740084172717}
   - component: {fileID: 3095038740084172716}
   - component: {fileID: 1701758947}
   m_Layer: 3
@@ -548,6 +548,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &9024098238152502852
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917249888858006044}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!195 &3095038740084172717
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -570,20 +584,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &9024098238152502852
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3917249888858006044}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.35
-  m_Height: 1.4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &3095038740084172716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,6 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8d21429b309be41844f0cf7ab11666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temlateData: {fileID: 0}
   characterData: {fileID: 11400000, guid: 3071adee42904c648a38d281ac706adb, type: 2}
   attackData: {fileID: 11400000, guid: ef46c19e4c0edf1489c27ec87e0c4c65, type: 2}
   isCritical: 0

@@ -69,7 +69,7 @@ Transform:
   - {fileID: 9175338222476295384}
   - {fileID: 9172568999214970872}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9081933324690167788
 Animator:
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   singhtRadius: 8
-  isGuard: 0
+  isGuard: 1
   lookAtTime: 3
   patrolRange: 8
 --- !u!114 &95471671775432406
@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8d21429b309be41844f0cf7ab11666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 11400000, guid: 843f62bd90d081f42a988444278bb72a, type: 2}
+  temlateData: {fileID: 11400000, guid: 843f62bd90d081f42a988444278bb72a, type: 2}
+  characterData: {fileID: 0}
   attackData: {fileID: 11400000, guid: 123b3e57ef758c54f8adcaf5865ad0c0, type: 2}
   isCritical: 0
 --- !u!1 &9177306181149031122
