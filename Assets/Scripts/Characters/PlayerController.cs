@@ -7,24 +7,24 @@ using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
-    //ThirdPlayerMove Move
+    #region ThirdPlayerMove Move
+
     float h;
     float v;
     public float speed = 6;
     public float turnSpeed = 15;
     private Transform camTransform;
     Vector3 movement;
-
     Vector3 camForward;
-    //ThirdPlayerMove Move End
+
+    #endregion ThirdPlayerMove Move
 
     private NavMeshAgent agent;
     private Animator anim;
-
     private CharacterStats characterStats;
-
     private GameObject attackTarget;
     private float lastAttackTime;
+    private bool isDead;
 
     private void Awake()
     {
@@ -36,17 +36,27 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        characterStats.CurrentHealth = characterStats.MaxHealth;
+
         MouseManager.Instance.OnMouseClicked += MoveToTarget;
         MouseManager.Instance.OnEnemyClicked += EventAttack;
-        characterStats.MaxHealth = 2;
+
+        GameManager.Instance.RegisterPlayer(characterStats);
     }
 
 
     private void Update()
     {
+        if (characterStats.CurrentHealth == 0)
+        {
+            isDead = true;
+            GameManager.Instance.NotifyObservers();
+        }
+
         Move();
-        Attack();
+
         SwitchAnimation();
+
         lastAttackTime -= Time.deltaTime;
     }
 
@@ -54,12 +64,9 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        agent.isStopped = true;
-
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
-        //GetComponent<Rigidbody>().MovePosition(transform.position + camTransform.right * h + camForward * v);  
         transform.Translate(camTransform.right * h * speed * Time.deltaTime + camForward * v * speed * Time.deltaTime, Space.World);
         if (h != 0 || v != 0)
         {
@@ -78,34 +85,29 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
     }
 
-    void Attack()
-    {
-        agent.isStopped = false;
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            anim.SetBool("Critical", characterStats.isCritical);
-            anim.SetTrigger("Attack");
-        }
-    }
-
     #endregion
 
 
     void SwitchAnimation()
     {
         anim.SetFloat("Speed", agent.velocity.sqrMagnitude);
+        anim.SetBool("Death", isDead);
     }
 
     public void MoveToTarget(Vector3 target)
     {
         StopAllCoroutines();
+
+        if (isDead) return;
+
         agent.isStopped = false;
         agent.destination = target;
     }
 
     private void EventAttack(GameObject target)
     {
+        if (isDead) return;
+
         if (target != null)
         {
             attackTarget = target;

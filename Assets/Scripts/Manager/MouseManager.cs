@@ -3,20 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseManager : MonoBehaviour
+public class MouseManager : Singleton<MouseManager>
 {
-    public static MouseManager Instance;
     public Texture2D point, doorway, attack, target, arrow;
     private RaycastHit hitInfo;
     public event Action<Vector3> OnMouseClicked;
     public event Action<GameObject> OnEnemyClicked;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null)
-
-            Destroy(gameObject);
-        Instance = this;
+        base.Awake();
+        //DontDestroyOnLoad();
     }
 
     void Update()

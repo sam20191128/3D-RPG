@@ -500,8 +500,7 @@ GameObject:
   - component: {fileID: 3917249888858308220}
   - component: {fileID: 3917249888848482720}
   - component: {fileID: 3095038740084172717}
-  - component: {fileID: 1701758941}
-  - component: {fileID: 3095038740084172723}
+  - component: {fileID: 9024098238152502852}
   - component: {fileID: 3095038740084172716}
   - component: {fileID: 1701758947}
   m_Layer: 3
@@ -527,7 +526,7 @@ Transform:
   - {fileID: 3917249888858308128}
   - {fileID: 3095038738627116169}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3917249888848482720
 Animator:
@@ -562,7 +561,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 100000
+  m_AngularSpeed: 500
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -571,7 +570,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &1701758941
+--- !u!136 &9024098238152502852
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -585,21 +584,6 @@ CapsuleCollider:
   m_Height: 1.4
   m_Direction: 1
   m_Center: {x: 0, y: 0.7, z: 0}
---- !u!114 &3095038740084172723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3917249888858006044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf748a711fd77fc44a03f9a66dc80e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6
-  turnSpeed: 15
-  camTransform: {fileID: 0}
 --- !u!114 &3095038740084172716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,6 +596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c88576ab6e9db4297f5f57281f3491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 3
+  turnSpeed: 15
 --- !u!114 &1701758947
 MonoBehaviour:
   m_ObjectHideFlags: 0

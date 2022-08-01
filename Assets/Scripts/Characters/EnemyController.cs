@@ -14,11 +14,13 @@ public enum EnemyStates
 }
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyController : MonoBehaviour
+[RequireComponent(typeof(CharacterStats))]
+public class EnemyController : MonoBehaviour, IEndGameObserver
 {
     private EnemyStates enemyStates;
     private NavMeshAgent agent;
     private Animator anim;
+    private Collider coll;
 
     private CharacterStats characterStats;
 
@@ -42,11 +44,13 @@ public class EnemyController : MonoBehaviour
     private bool isChase;
     private bool isFollow;
     private bool isDead;
+    private bool playerDead;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        coll = GetComponent<Collider>();
         characterStats = GetComponent<CharacterStats>();
         speed = agent.speed;
         guardPos = transform.position;
@@ -56,6 +60,8 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        characterStats.CurrentHealth = characterStats.MaxHealth;
+
         if (isGuard)
         {
             enemyStates = EnemyStates.GUARD; //守卫
@@ -65,6 +71,25 @@ public class EnemyController : MonoBehaviour
             enemyStates = EnemyStates.PATROL; //巡逻
             GetNewWayPoint();
         }
+
+        //TODO 场景切换后修改掉
+        GameManager.Instance.AddObserver(this);
+    }
+
+    //TODO 切换场景时启用
+    // void OnEnable()
+    // {
+    //     GameManager.Instance.AddObserver(this);
+    // }
+
+    void OnDisable()
+    {
+        if (!GameManager.IsInitialized)
+        {
+            return;
+        }
+
+        GameManager.Instance.RemoveObserver(this);
     }
 
     private void Update()
@@ -74,9 +99,12 @@ public class EnemyController : MonoBehaviour
             isDead = true;
         }
 
-        SwitchStates();
-        SwitchAnimation();
-        lastAttackTime -= Time.deltaTime;
+        if (!playerDead)
+        {
+            SwitchStates();
+            SwitchAnimation();
+            lastAttackTime -= Time.deltaTime;
+        }
     }
 
     void SwitchAnimation()
@@ -84,6 +112,7 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("Walk", isWalk);
         anim.SetBool("Chase", isChase);
         anim.SetBool("Follow", isFollow);
+        anim.SetBool("Death", isDead);
     }
 
     void SwitchStates()
@@ -92,9 +121,7 @@ public class EnemyController : MonoBehaviour
         {
             enemyStates = EnemyStates.DEAD;
         }
-
-        //发现player 追击 CHASE
-        if (FoundPlayer())
+        else if (FoundPlayer())
         {
             enemyStates = EnemyStates.CHASE;
         }
@@ -117,7 +144,6 @@ public class EnemyController : MonoBehaviour
 
                 break;
             case EnemyStates.PATROL: //巡逻
-
                 isChase = false;
                 agent.speed = speed * 0.5f;
 
@@ -142,7 +168,6 @@ public class EnemyController : MonoBehaviour
 
                 break;
             case EnemyStates.CHASE: //追逐
-
                 isWalk = false;
                 isChase = true;
                 agent.speed = speed;
@@ -189,24 +214,29 @@ public class EnemyController : MonoBehaviour
 
                 break;
             case EnemyStates.DEAD:
-
+                coll.enabled = false;
+                agent.enabled = false;
+                Destroy(gameObject, 2f);
                 break;
         }
     }
 
     void Attack()
     {
-        transform.LookAt(attackTarget.transform);
-        if (TargetInAttackRange())
+        if (attackTarget != null)
         {
-            //近身攻击动画
-            anim.SetTrigger("Attack");
-        }
+            transform.LookAt(attackTarget.transform);
+            if (TargetInAttackRange())
+            {
+                //近身攻击动画
+                anim.SetTrigger("Attack");
+            }
 
-        if (TargetInSkillRange())
-        {
-            //技能攻击动画
-            anim.SetTrigger("Skill");
+            if (TargetInSkillRange())
+            {
+                //技能攻击动画
+                anim.SetTrigger("Skill");
+            }
         }
     }
 
@@ -269,5 +299,17 @@ public class EnemyController : MonoBehaviour
             var targetStats = attackTarget.GetComponent<CharacterStats>();
             targetStats.TakeDamge(characterStats, targetStats);
         }
+    }
+
+    public void EndNotify()
+    {
+        //获胜动画
+        //停止所有一堆
+        //停止Agent
+        anim.SetBool("Win", true);
+        playerDead = true;
+        isChase = false;
+        isWalk = false;
+        attackTarget = null;
     }
 }

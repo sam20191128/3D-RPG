@@ -1,13 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
+    public CharacterData_SO temlateData;
     public CharacterData_SO characterData;
     public AttackData_SO attackData;
 
     [HideInInspector] public bool isCritical;
+
+    private void Awake()
+    {
+        if (temlateData != null)
+        {
+            characterData = Instantiate(temlateData);
+        }
+    }
+
 
     #region Read from Data_SO
 
@@ -60,6 +71,10 @@ public class CharacterStats : MonoBehaviour
         int damage = Mathf.Max(attacker.CurrentDamage() - defener.CurrentDfence, 0);
         CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
 
+        if (attacker.isCritical)
+        {
+            defener.GetComponent<Animator>().SetTrigger("Hit");
+        }
         //TODO Update UI
         //TODO 经验update
     }
