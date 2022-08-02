@@ -22,13 +22,13 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     private Animator anim;
     private Collider coll;
 
-    private CharacterStats characterStats;
+    protected CharacterStats characterStats;
 
     [Header("Basic Settings")] public float singhtRadius;
     public bool isGuard;
     private float speed;
 
-    private GameObject attackTarget;
+    protected GameObject attackTarget;
 
     public float lookAtTime;
     private float remainlookAtTime;
@@ -204,7 +204,6 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
                     if (lastAttackTime < 0)
                     {
                         lastAttackTime = characterStats.attackData.coolDown;
-
                         //暴击判断
                         characterStats.isCritical = Random.value < characterStats.attackData.criticalChance;
                         //执行攻击
@@ -215,7 +214,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
                 break;
             case EnemyStates.DEAD:
                 coll.enabled = false;
-                agent.enabled = false;
+                agent.radius = 0;
                 Destroy(gameObject, 2f);
                 break;
         }
@@ -294,7 +293,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     //Animation Event
     void Hit()
     {
-        if (attackTarget != null)
+        if (attackTarget != null && transform.IsFacingTarget(attackTarget.transform))
         {
             var targetStats = attackTarget.GetComponent<CharacterStats>();
             targetStats.TakeDamge(characterStats, targetStats);

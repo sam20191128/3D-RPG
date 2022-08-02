@@ -11,6 +11,8 @@ public class CharacterStats : MonoBehaviour
 
     [HideInInspector] public bool isCritical;
 
+    public GameObject deathEffect;
+
     private void Awake()
     {
         if (temlateData != null)
@@ -75,6 +77,13 @@ public class CharacterStats : MonoBehaviour
         {
             defener.GetComponent<Animator>().SetTrigger("Hit");
         }
+
+        if (deathEffect != null)
+        {
+            GameObject DeathEffect = Instantiate(deathEffect, defener.transform.position + new Vector3(0, 0.5f, 0), Quaternion.LookRotation(attacker.gameObject.transform.forward));
+            Destroy(DeathEffect, 3f);
+        }
+
         //TODO Update UI
         //TODO 经验update
     }

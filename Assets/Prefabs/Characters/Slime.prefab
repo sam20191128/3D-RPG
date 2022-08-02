@@ -69,7 +69,7 @@ Transform:
   - {fileID: 9175338222476295384}
   - {fileID: 9172568999214970872}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9081933324690167788
 Animator:
@@ -158,6 +158,9 @@ MonoBehaviour:
   characterData: {fileID: 0}
   attackData: {fileID: 11400000, guid: 123b3e57ef758c54f8adcaf5865ad0c0, type: 2}
   isCritical: 0
+  deathEffect: {fileID: 2493283776541376998, guid: 9f0b3e43b0441b342b7806c526cf1d2b, type: 3}
+  audioSource: {fileID: 0}
+  bloodAudio: {fileID: 8300000, guid: ba8916781ec938240aa1f584a0afb4cb, type: 3}
 --- !u!1 &9177306181149031122
 GameObject:
   m_ObjectHideFlags: 0
