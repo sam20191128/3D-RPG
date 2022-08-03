@@ -13,11 +13,16 @@ public class Rock : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        FlyToTarget();
     }
 
     public void FlyToTarget()
     {
-        Vector3 direction = (target.transform.position - transform.position + Vector3.up).normalized;
-        rb.AddForce(direction * force, ForceMode.Impulse);
+        if (target == null)
+        {
+            target = FindObjectOfType<PlayerController>().gameObject;
+            Vector3 direction = (target.transform.position - transform.position + Vector3.up).normalized;
+            rb.AddForce(direction * force, ForceMode.Impulse);
+        }
     }
 }
