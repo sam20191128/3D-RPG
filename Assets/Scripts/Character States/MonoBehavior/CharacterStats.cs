@@ -68,7 +68,7 @@ public class CharacterStats : MonoBehaviour
 
     #region Character Combat
 
-    public void TakeDamge(CharacterStats attacker, CharacterStats defener)
+    public void TakeDamage(CharacterStats attacker, CharacterStats defener)
     {
         int damage = Mathf.Max(attacker.CurrentDamage() - defener.CurrentDfence, 0);
         CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
@@ -88,9 +88,15 @@ public class CharacterStats : MonoBehaviour
         //TODO 经验update
     }
 
+    public void TakeDamage(int damage, CharacterStats defener)
+    {
+        int currentDamage = Mathf.Max(damage - defener.CurrentDfence, 0);
+        CurrentHealth = Mathf.Max(CurrentHealth - currentDamage, 0);
+    }
+
     private int CurrentDamage()
     {
-        float coreDamage = UnityEngine.Random.Range(attackData.minDamge, attackData.maxDamge);
+        float coreDamage = UnityEngine.Random.Range(attackData.minDamage, attackData.maxDamage);
 
         if (isCritical)
         {

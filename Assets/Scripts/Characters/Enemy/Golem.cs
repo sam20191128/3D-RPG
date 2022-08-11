@@ -26,7 +26,7 @@ public class Golem : EnemyController
 
             attackTarget.GetComponent<Animator>().SetTrigger("Dizzy");
 
-            targetStats.TakeDamge(characterStats, targetStats);
+            targetStats.TakeDamage(characterStats, targetStats);
         }
     }
 
@@ -36,7 +36,7 @@ public class Golem : EnemyController
         if (attackTarget != null)
         {
             var rock = Instantiate(rockPrefab, handPos.position, Quaternion.identity);
-            rock.GetComponent<Rock>().target = attackTarget;
+            //rock.GetComponent<Rock>().target = attackTarget;
         }
     }
 }
