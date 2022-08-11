@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3021424255205334290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4323598936938354676}
+  m_Layer: 6
+  m_Name: HealthBarPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4323598936938354676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021424255205334290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9172695766716557870}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9176422732867857428
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,6 +78,7 @@ GameObject:
   - component: {fileID: 9176837162889168727}
   - component: {fileID: 9176837162889168724}
   - component: {fileID: 95471671775432406}
+  - component: {fileID: 1051691472199370703}
   m_Layer: 6
   m_Name: Slime
   m_TagString: Enemy
@@ -68,8 +100,9 @@ Transform:
   m_Children:
   - {fileID: 9175338222476295384}
   - {fileID: 9172568999214970872}
+  - {fileID: 4323598936938354676}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9081933324690167788
 Animator:
@@ -115,7 +148,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2.5
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 500
   m_StoppingDistance: 1
@@ -159,8 +192,22 @@ MonoBehaviour:
   attackData: {fileID: 11400000, guid: 123b3e57ef758c54f8adcaf5865ad0c0, type: 2}
   isCritical: 0
   deathEffect: {fileID: 2493283776541376998, guid: 9f0b3e43b0441b342b7806c526cf1d2b, type: 3}
-  audioSource: {fileID: 0}
-  bloodAudio: {fileID: 8300000, guid: ba8916781ec938240aa1f584a0afb4cb, type: 3}
+--- !u!114 &1051691472199370703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9176492482452636674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b90b041281d564eae3a531bca4c18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUIPrefab: {fileID: 7039999870820792540, guid: 67989d066a09b1441a7e69dc2f9d14bf, type: 3}
+  barPoint: {fileID: 4323598936938354676}
+  alwaysVisable: 0
+  visableTime: 3
 --- !u!1 &9177306181149031122
 GameObject:
   m_ObjectHideFlags: 0

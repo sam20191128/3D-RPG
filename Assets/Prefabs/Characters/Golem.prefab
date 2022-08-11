@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &526197885309458721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4102111438933364475}
+  m_Layer: 6
+  m_Name: HealthBarPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4102111438933364475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526197885309458721}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1587840397114761545}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1587840396648920387
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +172,7 @@ GameObject:
   - component: {fileID: 1483972329875862959}
   - component: {fileID: 4284500072069387780}
   - component: {fileID: 1713232785}
+  - component: {fileID: 686066899115807256}
   m_Layer: 6
   m_Name: Golem
   m_TagString: Enemy
@@ -162,8 +194,9 @@ Transform:
   m_Children:
   - {fileID: 1587840397737482012}
   - {fileID: 1587840397330445884}
+  - {fileID: 4102111438933364475}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1587840397114761546
 Animator:
@@ -175,7 +208,7 @@ Animator:
   m_GameObject: {fileID: 1587840397114761547}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0f2c5202b918687408ac5bc7429a03ea, type: 3}
-  m_Controller: {fileID: 22100000, guid: 91d1c276a30c4ef45b5efc5dd50266af, type: 2}
+  m_Controller: {fileID: 9100000, guid: a3992ba34caa7ee448df80fb8ca8d994, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -208,16 +241,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 1587840397114761547}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1.4
   m_Speed: 2
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 4
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -250,10 +283,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879bd51d13c9b874db21b3fa393fdfc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  singhtRadius: 8
+  singhtRadius: 10
   isGuard: 1
-  lookAtTime: 4
-  patrolRange: 6
+  lookAtTime: 3
+  patrolRange: 0
+  kickForce: 10
+  rockPrefab: {fileID: 3031037005498534228, guid: c700ce39859180d44930b1dc3c77b410, type: 3}
+  handPos: {fileID: 1587840397395923503}
+--- !u!114 &686066899115807256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587840397114761547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b90b041281d564eae3a531bca4c18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUIPrefab: {fileID: 7039999870820792540, guid: 67989d066a09b1441a7e69dc2f9d14bf, type: 3}
+  barPoint: {fileID: 4102111438933364475}
+  alwaysVisable: 0
+  visableTime: 3
 --- !u!1 &1587840397143233250
 GameObject:
   m_ObjectHideFlags: 0

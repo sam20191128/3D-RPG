@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 3095038740084172717}
   - component: {fileID: 3095038740084172716}
   - component: {fileID: 1701758947}
+  - component: {fileID: 5778714459091230856}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -526,8 +527,9 @@ Transform:
   - {fileID: 3917249888858308558}
   - {fileID: 3917249888858308128}
   - {fileID: 3095038738627116169}
+  - {fileID: 740592614656421957}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3917249888848482720
 Animator:
@@ -590,7 +592,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.35
   m_Speed: 5
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 500
   m_StoppingDistance: 1
@@ -632,6 +634,22 @@ MonoBehaviour:
   attackData: {fileID: 11400000, guid: ef46c19e4c0edf1489c27ec87e0c4c65, type: 2}
   isCritical: 0
   deathEffect: {fileID: 2493283776541376998, guid: 9f0b3e43b0441b342b7806c526cf1d2b, type: 3}
+--- !u!114 &5778714459091230856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917249888858006044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b90b041281d564eae3a531bca4c18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUIPrefab: {fileID: 7039999870820792540, guid: 67989d066a09b1441a7e69dc2f9d14bf, type: 3}
+  barPoint: {fileID: 740592614656421957}
+  alwaysVisable: 0
+  visableTime: 3
 --- !u!1 &3917249888858006046
 GameObject:
   m_ObjectHideFlags: 0
@@ -2504,6 +2522,37 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000008940697, y: 0.17928879, z: 0.7022597}
     m_Extent: {x: 0.87674475, y: 0.61002564, z: 0.75376505}
   m_DirtyAABB: 0
+--- !u!1 &6405375467636679322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 740592614656421957}
+  m_Layer: 3
+  m_Name: HealthBarPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &740592614656421957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6405375467636679322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.725, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3917249888858308220}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &280319151332194749
 PrefabInstance:
   m_ObjectHideFlags: 0

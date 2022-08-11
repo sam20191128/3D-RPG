@@ -144,19 +144,22 @@ public class PlayerController : MonoBehaviour
     //Animation Event
     void Hit()
     {
-        if (attackTarget.CompareTag("Attackable"))
+        if (attackTarget != null)
         {
-            if (attackTarget.GetComponent<Rock>() && attackTarget.GetComponent<Rock>().rockStates == Rock.RockStates.HitNothing)
+            if (attackTarget.CompareTag("Attackable"))
             {
-                attackTarget.GetComponent<Rock>().rockStates = Rock.RockStates.HitEnemy;
-                attackTarget.GetComponent<Rigidbody>().velocity = Vector3.one;
-                attackTarget.GetComponent<Rigidbody>().AddForce(transform.forward * 20, ForceMode.Impulse);
+                if (attackTarget.GetComponent<Rock>() && attackTarget.GetComponent<Rock>().rockStates == Rock.RockStates.HitNothing)
+                {
+                    attackTarget.GetComponent<Rock>().rockStates = Rock.RockStates.HitEnemy;
+                    attackTarget.GetComponent<Rigidbody>().velocity = Vector3.one;
+                    attackTarget.GetComponent<Rigidbody>().AddForce(transform.forward * 20, ForceMode.Impulse);
+                }
             }
-        }
-        else
-        {
-            var targetStats = attackTarget.GetComponent<CharacterStats>();
-            targetStats.TakeDamage(characterStats, targetStats);
+            else
+            {
+                var targetStats = attackTarget.GetComponent<CharacterStats>();
+                targetStats.TakeDamage(characterStats, targetStats);
+            }
         }
     }
 }
