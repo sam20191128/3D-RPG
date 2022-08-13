@@ -7,15 +7,15 @@ using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
-    private TMP_Text levelTex;
+    private Text levelTex;
     private Image healthSlider;
     private Image expSlider;
 
     private void Awake()
     {
         healthSlider = transform.GetChild(0).GetChild(0).GetComponent<Image>();
+        levelTex = transform.GetChild(0).GetChild(1).GetComponent<Text>();
         expSlider = transform.GetChild(1).GetChild(0).GetComponent<Image>();
-        levelTex = transform.GetChild(2).GetComponent<TMP_Text>();
     }
 
     private void Update()
