@@ -13,18 +13,141 @@ MonoBehaviour:
   m_Name: FilmGrain
   m_EditorClassIdentifier: 
   active: 1
+  m_AdvancedMode: 0
   type:
     m_OverrideState: 1
     m_Value: 0
   intensity:
     m_OverrideState: 1
     m_Value: 1
+    min: 0
+    max: 1
   response:
     m_OverrideState: 1
     m_Value: 0.8
+    min: 0
+    max: 1
   texture:
     m_OverrideState: 1
     m_Value: {fileID: 0}
+--- !u!114 &-6182377906721504648
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56020a790e51ef443834facfbb557d69, type: 3}
+  m_Name: BokehBlur
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  blurSize:
+    m_OverrideState: 1
+    m_Value: 0.00141
+    min: 0
+    max: 0.01
+  iterations:
+    m_OverrideState: 1
+    m_Value: 5
+    min: 1
+    max: 500
+  RTDownSample:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 1
+    max: 10
+--- !u!114 &-4090757507357066301
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e96912ed91316c409a5037bbc4d9c3c, type: 3}
+  m_Name: GlitchImageBlockV2
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  Fade:
+    m_OverrideState: 1
+    m_Value: 0.126
+    min: 0
+    max: 1
+  Speed:
+    m_OverrideState: 1
+    m_Value: 0.5
+    min: 0
+    max: 1
+  Amount:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 10
+  BlockLayer1_U:
+    m_OverrideState: 1
+    m_Value: 2
+    min: 0
+    max: 50
+  BlockLayer1_V:
+    m_OverrideState: 1
+    m_Value: 16
+    min: 0
+    max: 50
+  BlockLayer1_Indensity:
+    m_OverrideState: 1
+    m_Value: 8
+    min: 0
+    max: 50
+  RGBSplitIndensity:
+    m_OverrideState: 1
+    m_Value: 2
+    min: 0
+    max: 50
+  BlockVisualizeDebug:
+    m_OverrideState: 1
+    m_Value: 0
+--- !u!114 &-3380288605327679590
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ee3a1484550d74abcb8be070b58b97, type: 3}
+  m_Name: GlitchImageBlockV4
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  Speed:
+    m_OverrideState: 1
+    m_Value: 9.5
+    min: 0
+    max: 50
+  BlockSize:
+    m_OverrideState: 1
+    m_Value: 8
+    min: 0
+    max: 50
+  MaxRGBSplitX:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 25
+  MaxRGBSplitY:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 25
+  BlockVisualizeDebug:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &-2476594113531727895
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -38,34 +161,45 @@ MonoBehaviour:
   m_Name: Bloom
   m_EditorClassIdentifier: 
   active: 1
+  m_AdvancedMode: 0
   threshold:
     m_OverrideState: 1
     m_Value: 1
+    min: 0
   intensity:
     m_OverrideState: 1
     m_Value: 5
+    min: 0
   scatter:
     m_OverrideState: 1
     m_Value: 0.7
+    min: 0
+    max: 1
   clamp:
     m_OverrideState: 1
     m_Value: 65472
+    min: 0
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 0
   skipIterations:
     m_OverrideState: 1
     m_Value: 1
+    min: 0
+    max: 16
   dirtTexture:
     m_OverrideState: 1
     m_Value: {fileID: 0}
-    dimension: 1
   dirtIntensity:
     m_OverrideState: 1
     m_Value: 0
+    min: 0
 --- !u!114 &-2093868251789193106
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -79,21 +213,146 @@ MonoBehaviour:
   m_Name: Vignette
   m_EditorClassIdentifier: 
   active: 1
+  m_AdvancedMode: 0
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
     m_Value: 0.096
+    min: 0
+    max: 1
   smoothness:
     m_OverrideState: 1
     m_Value: 1
+    min: 0.01
+    max: 1
   rounded:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-1799307235663204413
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d281c9a6fa1541b4f813b2c13d795f9d, type: 3}
+  m_Name: RainDrop
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  Size:
+    m_OverrideState: 1
+    m_Value: 1.9
+    min: 0
+    max: 100
+  T:
+    m_OverrideState: 1
+    m_Value: 0
+    min: 0
+    max: 50
+  Distortion:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+--- !u!114 &-1295036071330229212
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccf22fea0635d94aa4d62e259dbc14c, type: 3}
+  m_Name: GlitchRGBSplitV4
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  SplitDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  indensity:
+    m_OverrideState: 1
+    m_Value: 0.055
+    min: 0
+    max: 1
+  speed:
+    m_OverrideState: 1
+    m_Value: 32.3
+    min: 0
+    max: 100
+--- !u!114 &-791414024919683479
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff1bd36b92b63e48958cff894fa0bb8, type: 3}
+  m_Name: DOF_BokehBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  <displayName>k__BackingField: 
+  m_AdvancedMode: 0
+  blurSize:
+    m_OverrideState: 1
+    m_Value: 0.0017
+    min: 0
+    max: 0.01
+  iterations:
+    m_OverrideState: 1
+    m_Value: 5
+    min: 1
+    max: 500
+  RTDownSample:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 1
+    max: 10
+  distance:
+    m_OverrideState: 1
+    m_Value: 0.001
+    min: 0
+    max: 2
+  lensCoeff:
+    m_OverrideState: 1
+    m_Value: 0
+    min: 0
+    max: 1
+  maxCoC:
+    m_OverrideState: 1
+    m_Value: 0.001
+    min: 0
+    max: 2
+  rcpMaxCoC:
+    m_OverrideState: 1
+    m_Value: 0
+    min: 0
+    max: 1
+  rcpAspect:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 10
+  taaParams:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 10
+  material: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +372,302 @@ MonoBehaviour:
   - {fileID: -2093868251789193106}
   - {fileID: 4127322185141979117}
   - {fileID: 7062981010865784635}
+  - {fileID: 1183442118542163058}
+  - {fileID: -1799307235663204413}
+  - {fileID: 3586422226733772814}
+  - {fileID: 926041421097550286}
+  - {fileID: 4953936587428005478}
+  - {fileID: -1295036071330229212}
+  - {fileID: 6371594445848476105}
+  - {fileID: 6689835791811045045}
+  - {fileID: 8836467354799697117}
+  - {fileID: 3839078281516900135}
+  - {fileID: 2202238573245542896}
+  - {fileID: 7658730203379546353}
+  - {fileID: 5793946471041795584}
+  - {fileID: 790955143431565572}
+  - {fileID: 2961630272755983599}
+  - {fileID: 5878692150030140105}
+  - {fileID: -4090757507357066301}
+  - {fileID: 6734371858721705272}
+  - {fileID: -3380288605327679590}
+  - {fileID: -6182377906721504648}
+--- !u!114 &790955143431565572
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3291b7d4b4fa83c4c85522218ec6561a, type: 3}
+  m_Name: GlitchLineBlock
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  blockDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  intervalType:
+    m_OverrideState: 1
+    m_Value: 2
+  frequency:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 25
+  Amount:
+    m_OverrideState: 1
+    m_Value: 0.088
+    min: 0
+    max: 1
+  LinesWidth:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0.1
+    max: 10
+  Speed:
+    m_OverrideState: 1
+    m_Value: 0.8
+    min: 0
+    max: 1
+  Offset:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 13
+  Alpha:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+--- !u!114 &926041421097550286
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f936816822a10845bc79c1328b0c50d, type: 3}
+  m_Name: GlitchRGBSplitV2
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  SplitDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  amount:
+    m_OverrideState: 1
+    m_Value: 0.025
+    min: 0
+    max: 1
+  amplitude:
+    m_OverrideState: 1
+    m_Value: 3
+    min: 1
+    max: 6
+  speed:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 2
+--- !u!114 &1183442118542163058
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e31aedce7c5f3441961db504d2a0410, type: 3}
+  m_Name: TiltShiftBlurV2
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  blurRadius:
+    m_OverrideState: 1
+    m_Value: 0.00151
+    min: 0
+    max: 0.01
+  iterations:
+    m_OverrideState: 1
+    m_Value: 128
+    min: 8
+    max: 128
+  centerOffset:
+    m_OverrideState: 1
+    m_Value: 0
+    min: -1
+    max: 1
+  AreaSize:
+    m_OverrideState: 1
+    m_Value: 1.95
+    min: 0
+    max: 20
+  areaSmooth:
+    m_OverrideState: 1
+    m_Value: 2.56
+    min: 1
+    max: 20
+  showPreview:
+    m_OverrideState: 1
+    m_Value: 0
+--- !u!114 &2202238573245542896
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c0e90fb07a7b44a887b826db27eef2, type: 3}
+  m_Name: GlitchDigitalStripe
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.127
+    min: 0
+    max: 1
+  frequency:
+    m_OverrideState: 1
+    m_Value: 5
+    min: 1
+    max: 10
+  stripeLength:
+    m_OverrideState: 1
+    m_Value: 0.89
+    min: 0
+    max: 0.99
+  noiseTextureWidth:
+    m_OverrideState: 1
+    m_Value: 20
+    min: 8
+    max: 256
+  noiseTextureHeight:
+    m_OverrideState: 1
+    m_Value: 20
+    min: 8
+    max: 256
+  needStripColorAdjust:
+    m_OverrideState: 1
+    m_Value: 0
+  StripColorAdjustColor:
+    m_OverrideState: 1
+    m_Value: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  StripColorAdjustIndensity:
+    m_OverrideState: 1
+    m_Value: 2
+    min: 0
+    max: 10
+--- !u!114 &2961630272755983599
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03439559d4c3d34ab65aec5b9e88296, type: 3}
+  m_Name: GlitchScreenJump
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  ScreenJumpDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  ScreenJumpIndensity:
+    m_OverrideState: 1
+    m_Value: 0.044
+    min: 0
+    max: 1
+--- !u!114 &3586422226733772814
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89b3284045765c42a2e2b22cfad2ebb, type: 3}
+  m_Name: GlitchRGBSplit
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  SplitDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  amount:
+    m_OverrideState: 1
+    m_Value: 2.23
+    min: 0
+    max: 5
+  speed:
+    m_OverrideState: 1
+    m_Value: 3.62
+    min: 0
+    max: 10
+  fading:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+  centerFading:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+  amountR:
+    m_OverrideState: 1
+    m_Value: 5
+    min: 0
+    max: 5
+  amountB:
+    m_OverrideState: 1
+    m_Value: 5
+    min: 0
+    max: 5
+--- !u!114 &3839078281516900135
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb74a15c0eec8b4db4d7fc68c3c116b, type: 3}
+  m_Name: GlitchScanLineJitter
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  JitterDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  intervalType:
+    m_OverrideState: 1
+    m_Value: 2
+  frequency:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 25
+  JitterIndensity:
+    m_OverrideState: 1
+    m_Value: 0.504
+    min: 0
+    max: 1
 --- !u!114 &4127322185141979117
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -126,9 +681,257 @@ MonoBehaviour:
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
   active: 1
+  m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
     m_Value: 0.2
+    min: 0
+    max: 1
+--- !u!114 &4953936587428005478
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c92ce821d5fe0245923bc7159faa356, type: 3}
+  m_Name: GlitchRGBSplitV3
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  SplitDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  intervalType:
+    m_OverrideState: 1
+    m_Value: 2
+  amount:
+    m_OverrideState: 1
+    m_Value: 48.6
+    min: 0
+    max: 200
+  frequency:
+    m_OverrideState: 1
+    m_Value: 15.3
+    min: 0.1
+    max: 25
+  speed:
+    m_OverrideState: 1
+    m_Value: 15
+    min: 0
+    max: 15
+--- !u!114 &5793946471041795584
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae2df95e56c7134cb06fbf7dc65aebf, type: 3}
+  m_Name: GlitchWaveJitter
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  jitterDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  intervalType:
+    m_OverrideState: 1
+    m_Value: 2
+  frequency:
+    m_OverrideState: 1
+    m_Value: 5
+    min: 0
+    max: 50
+  RGBSplit:
+    m_OverrideState: 1
+    m_Value: 20
+    min: 0
+    max: 50
+  speed:
+    m_OverrideState: 1
+    m_Value: 0.25
+    min: 0
+    max: 1
+  amount:
+    m_OverrideState: 1
+    m_Value: 1.348
+    min: 0
+    max: 2
+  customResolution:
+    m_OverrideState: 1
+    m_Value: 0
+  resolution:
+    m_OverrideState: 1
+    m_Value: {x: 640, y: 480}
+--- !u!114 &5878692150030140105
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ae6fb57696bf04f884484d9e8db9af, type: 3}
+  m_Name: GlitchImageBlock
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  Fade:
+    m_OverrideState: 1
+    m_Value: 0.219
+    min: 0
+    max: 1
+  Speed:
+    m_OverrideState: 1
+    m_Value: 0.5
+    min: 0
+    max: 1
+  Amount:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 10
+  BlockLayer1_U:
+    m_OverrideState: 1
+    m_Value: 9
+    min: 0
+    max: 50
+  BlockLayer1_V:
+    m_OverrideState: 1
+    m_Value: 9
+    min: 0
+    max: 50
+  BlockLayer2_U:
+    m_OverrideState: 1
+    m_Value: 5
+    min: 0
+    max: 50
+  BlockLayer2_V:
+    m_OverrideState: 1
+    m_Value: 5
+    min: 0
+    max: 50
+  BlockLayer1_Indensity:
+    m_OverrideState: 1
+    m_Value: 8
+    min: 0
+    max: 50
+  BlockLayer2_Indensity:
+    m_OverrideState: 1
+    m_Value: 4
+    min: 0
+    max: 50
+  RGBSplitIndensity:
+    m_OverrideState: 1
+    m_Value: 0.5
+    min: 0
+    max: 50
+  BlockVisualizeDebug:
+    m_OverrideState: 1
+    m_Value: 0
+--- !u!114 &6371594445848476105
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5c91a90d758e549b66a871683869fe, type: 3}
+  m_Name: GlitchRGBSplitV5
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  SplitDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  indensity:
+    m_OverrideState: 1
+    m_Value: 0.107
+    min: 0
+    max: 1
+  speed:
+    m_OverrideState: 1
+    m_Value: 10
+    min: 0
+    max: 100
+--- !u!114 &6689835791811045045
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eac467802358694f9131ceaeb25782c, type: 3}
+  m_Name: GlitchTileJitter
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  jitterDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  intervalType:
+    m_OverrideState: 1
+    m_Value: 2
+  frequency:
+    m_OverrideState: 1
+    m_Value: 14.2
+    min: 0
+    max: 25
+  splittingDirection:
+    m_OverrideState: 1
+    m_Value: 1
+  splittingNumber:
+    m_OverrideState: 1
+    m_Value: 5
+    min: 0
+    max: 50
+  jitterAmount:
+    m_OverrideState: 1
+    m_Value: 65.9
+    min: 0
+    max: 100
+  jitterSpeed:
+    m_OverrideState: 1
+    m_Value: 0.64
+    min: 0
+    max: 1
+--- !u!114 &6734371858721705272
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92695d5aef31da469fcec99e2ee033e, type: 3}
+  m_Name: GlitchImageBlockV3
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  Speed:
+    m_OverrideState: 1
+    m_Value: 8.8
+    min: 0
+    max: 50
+  BlockSize:
+    m_OverrideState: 1
+    m_Value: 8
+    min: 0
+    max: 50
+  BlockVisualizeDebug:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &7062981010865784635
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -142,21 +945,31 @@ MonoBehaviour:
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
   active: 1
+  m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 1
     m_Value: 0.5
   contrast:
     m_OverrideState: 1
     m_Value: 0
+    min: -100
+    max: 100
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
+    hdr: 1
+    showAlpha: 0
+    showEyeDropper: 1
   hueShift:
     m_OverrideState: 1
     m_Value: 0
+    min: -180
+    max: 180
   saturation:
     m_OverrideState: 1
     m_Value: 0
+    min: -100
+    max: 100
 --- !u!114 &7246632413680156838
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -169,37 +982,104 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
+  m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
     m_Value: 2
   gaussianStart:
     m_OverrideState: 1
     m_Value: 10
+    min: 0
   gaussianEnd:
     m_OverrideState: 1
     m_Value: 30
+    min: 0
   gaussianMaxRadius:
     m_OverrideState: 1
     m_Value: 1
+    min: 0.5
+    max: 1.5
   highQualitySampling:
     m_OverrideState: 1
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
     m_Value: 10
+    min: 0.1
   aperture:
     m_OverrideState: 1
     m_Value: 9.2
+    min: 1
+    max: 32
   focalLength:
     m_OverrideState: 1
     m_Value: 300
+    min: 1
+    max: 300
   bladeCount:
     m_OverrideState: 1
     m_Value: 5
+    min: 3
+    max: 9
   bladeCurvature:
     m_OverrideState: 1
     m_Value: 1
+    min: 0
+    max: 1
   bladeRotation:
     m_OverrideState: 1
     m_Value: 0
+    min: -180
+    max: 180
+--- !u!114 &7658730203379546353
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74f1507424ae834ebda6a06b9a38943, type: 3}
+  m_Name: GlitchAnalogNoise
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  NoiseSpeed:
+    m_OverrideState: 1
+    m_Value: 0.5
+    min: 0
+    max: 1
+  NoiseFading:
+    m_OverrideState: 1
+    m_Value: 0.577
+    min: 0
+    max: 1
+  LuminanceJitterThreshold:
+    m_OverrideState: 1
+    m_Value: 0.8
+    min: 0
+    max: 1
+--- !u!114 &8836467354799697117
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fcd490152803b4cbd53dbf680fcfaa, type: 3}
+  m_Name: GlitchScreenShake
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  ScreenJumpDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  ScreenShakeIndensity:
+    m_OverrideState: 1
+    m_Value: 0.093
+    min: 0
+    max: 1
