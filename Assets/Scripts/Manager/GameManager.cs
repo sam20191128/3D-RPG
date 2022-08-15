@@ -8,6 +8,12 @@ public class GameManager : Singleton<GameManager>
 
     List<IEndGameObserver> endGameObservers = new List<IEndGameObserver>();
 
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(this);
+    }
+
     public void RegisterPlayer(CharacterStats player)
     {
         playerStats = player;
