@@ -12,7 +12,7 @@ public class SceneFader : MonoBehaviour
 
     private void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup = GetComponentInChildren<CanvasGroup>();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -38,5 +38,7 @@ public class SceneFader : MonoBehaviour
             canvasGroup.alpha -= Time.deltaTime / time;
             yield return null;
         }
+
+        Destroy(gameObject);
     }
 }

@@ -73,14 +73,14 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         }
 
         //TODO 场景切换后修改掉
-        GameManager.Instance.AddObserver(this);
+        //GameManager.Instance.AddObserver(this);
     }
 
     //TODO 切换场景时启用
-    // void OnEnable()
-    // {
-    //     GameManager.Instance.AddObserver(this);
-    // }
+    void OnEnable()
+    {
+        GameManager.Instance.AddObserver(this);
+    }
 
     void OnDisable()
     {
@@ -104,6 +104,11 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
             SwitchStates();
             SwitchAnimation();
             lastAttackTime -= Time.deltaTime;
+        }
+
+        if (playerDead)
+        {
+            GameManager.Instance.RemoveObserver(this);
         }
     }
 
