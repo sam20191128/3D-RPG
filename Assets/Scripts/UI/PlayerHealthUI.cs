@@ -13,9 +13,9 @@ public class PlayerHealthUI : MonoBehaviour
 
     private void Awake()
     {
-        healthSlider = transform.GetChild(0).GetChild(0).GetComponent<Image>();
-        levelTex = transform.GetChild(0).GetChild(1).GetComponent<Text>();
-        expSlider = transform.GetChild(1).GetChild(0).GetComponent<Image>();
+        levelTex = transform.GetChild(0).GetComponent<Text>();
+        healthSlider = transform.GetChild(1).GetChild(0).GetComponent<Image>();
+        expSlider = transform.GetChild(2).GetChild(0).GetComponent<Image>();
     }
 
     private void Update()

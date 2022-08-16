@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Grunt Data
   m_EditorClassIdentifier: 
   maxHealth: 30
-  currentHealth: 0
+  currentHealth: 30
   baseDefence: 8
   currentDfence: 8
   killpoint: 25

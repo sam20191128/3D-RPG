@@ -3,22 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
-    #region ThirdPlayerMove Move
-
-    float h;
-    float v;
-    public float speed = 6;
-    public float turnSpeed = 15;
-    private Transform camTransform;
-    Vector3 movement;
-    Vector3 camForward;
-
-    #endregion ThirdPlayerMove Move
-
     private NavMeshAgent agent;
     private Animator anim;
     private CharacterStats characterStats;
@@ -29,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        camTransform = Camera.main.transform;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
@@ -40,12 +26,13 @@ public class PlayerController : MonoBehaviour
     {
         MouseManager.Instance.OnMouseClicked += MoveToTarget;
         MouseManager.Instance.OnEnemyClicked += EventAttack;
+        GameManager.Instance.RegisterPlayer(characterStats);
     }
 
     private void Start()
     {
-        characterStats.CurrentHealth = characterStats.MaxHealth;
-        GameManager.Instance.RegisterPlayer(characterStats);
+        //characterStats.CurrentHealth = characterStats.MaxHealth;
+        SaveManager.Instance.LoadPlayerData();
     }
 
     private void OnDisable()
@@ -67,42 +54,10 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.NotifyObservers();
         }
 
-        Move();
-
         SwitchAnimation();
 
         lastAttackTime -= Time.deltaTime;
     }
-
-    #region ThirdPlayerMove Move
-
-    void Move()
-    {
-        agent.isStopped = false;
-
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
-
-        transform.Translate(camTransform.right * h * speed * Time.deltaTime + camForward * v * speed * Time.deltaTime, Space.World);
-        if (h != 0 || v != 0)
-        {
-            Rotating(h, v);
-        }
-    }
-
-    void Rotating(float hh, float vv)
-    {
-        camForward = Vector3.Cross(camTransform.right, Vector3.up);
-
-        Vector3 targetDir = camTransform.right * hh + camForward * vv;
-
-        Quaternion targetRotation = Quaternion.LookRotation(targetDir, Vector3.up);
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
-    }
-
-    #endregion
-
 
     void SwitchAnimation()
     {
@@ -127,7 +82,7 @@ public class PlayerController : MonoBehaviour
         if (target != null)
         {
             attackTarget = target;
-            characterStats.isCritical = Random.value < characterStats.attackData.criticalChance;
+            characterStats.isCritical = UnityEngine.Random.value < characterStats.attackData.criticalChance;
             StartCoroutine(MoveToAttackTarget());
         }
     }

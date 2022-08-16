@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneController : Singleton<SceneController>
 {
     public GameObject playerPrefab;
+    public SceneFader sceneFaderPrefab;
     private GameObject player;
     private NavMeshAgent playerAgent;
 
@@ -31,12 +32,13 @@ public class SceneController : Singleton<SceneController>
 
     IEnumerator Transition(string sceneName, TransitionDestination.DestinationTag destinationTag)
     {
-        //TODO 保存数据
+        SaveManager.Instance.SavePlayerData(); //保存数据
 
         if (SceneManager.GetActiveScene().name != sceneName)
         {
             yield return SceneManager.LoadSceneAsync(sceneName);
             yield return Instantiate(playerPrefab, GetDestination(destinationTag).transform.position, GetDestination(destinationTag).transform.rotation);
+            SaveManager.Instance.LoadPlayerData(); //读取数据
             yield break;
         }
         else
@@ -62,5 +64,38 @@ public class SceneController : Singleton<SceneController>
         }
 
         return null;
+    }
+
+    public void TransitionToMain()
+    {
+        StartCoroutine(LoadMain());
+    }
+
+    public void TransitionToLoadGame()
+    {
+        StartCoroutine(LoadLevel(SaveManager.Instance.SceneName));
+    }
+
+    public void TransitionToFirstLevel()
+    {
+        StartCoroutine(LoadLevel("Game"));
+    }
+
+    IEnumerator LoadLevel(string scene)
+    {
+        if (scene != "")
+        {
+            yield return SceneManager.LoadSceneAsync(scene);
+            yield return player = Instantiate(playerPrefab, GameManager.Instance.GetEntrance().position, GameManager.Instance.GetEntrance().rotation);
+            //保存数据
+            SaveManager.Instance.SavePlayerData();
+            yield break;
+        }
+    }
+
+    IEnumerator LoadMain()
+    {
+        yield return SceneManager.LoadSceneAsync("Main");
+        yield break;
     }
 }

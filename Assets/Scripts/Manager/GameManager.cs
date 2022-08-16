@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public CharacterStats playerStats;
+    private Camera camera;
 
     List<IEndGameObserver> endGameObservers = new List<IEndGameObserver>();
 
@@ -17,6 +18,8 @@ public class GameManager : Singleton<GameManager>
     public void RegisterPlayer(CharacterStats player)
     {
         playerStats = player;
+        camera = Camera.main;
+        camera.GetComponent<Cam360View>().target = playerStats.transform.GetChild(2);
     }
 
     public void AddObserver(IEndGameObserver observer)
@@ -35,5 +38,18 @@ public class GameManager : Singleton<GameManager>
         {
             observer.EndNotify();
         }
+    }
+
+    public Transform GetEntrance()
+    {
+        foreach (var item in FindObjectsOfType<TransitionDestination>())
+        {
+            if (item.destinationTag == TransitionDestination.DestinationTag.ENTER)
+            {
+                return item.transform;
+            }
+        }
+
+        return null;
     }
 }

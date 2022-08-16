@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TurtleShell Data
   m_EditorClassIdentifier: 
   maxHealth: 20
-  currentHealth: 0
+  currentHealth: 20
   baseDefence: 5
   currentDfence: 5
   killpoint: 15
